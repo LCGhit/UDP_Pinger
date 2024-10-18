@@ -19,7 +19,7 @@ while True:
     # Receive the client packet along with the address it is coming from
 
     message, address = serverSocket.recvfrom(1024)
-    if (int(message.split()[1]) != 2):
+    if (int(message.split()[1]) != rand):
         message = message.decode("utf-8") # convert bytes to string
         # Capitalize the message from the client
         message = message.upper()
