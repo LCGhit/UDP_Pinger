@@ -5,7 +5,7 @@ from socket import *
 
 # Check command line arguments
 if len(sys.argv) != 2:
-    print("Usage: python UDPPingerServer <server port no>")
+    print('Usage: python UDPPingerServer <server port no>')
     sys.exit()
 
 # Create a UDP socket
@@ -29,11 +29,11 @@ while True:
         if (int(message.split()[1]) == rand_2):
             print('Delayed message: ', rand_2)
             time.sleep(3)
-        message = message.decode("utf-8") # convert bytes to string
+        message = message.decode('utf-8')  # convert bytes to string
         # Capitalize the message from the client
         message = message.upper()
         # the server responds
-        serverSocket.sendto(message.encode("utf-8"), address)
+        serverSocket.sendto(message.encode('utf-8'), address)
     else:
         lost_packages += 1
         print('Ignored message: ', rand_1)

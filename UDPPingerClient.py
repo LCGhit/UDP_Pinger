@@ -1,10 +1,10 @@
-import time
 import sys
+import time
 from socket import *
 
 # Check command line arguments
 if len(sys.argv) != 3:
-    print("Usage: python UDPPingerClient <server ip address> <server port no>")
+    print('Usage: python UDPPingerClient <server ip address> <server port no>')
     sys.exit()
 
 # Create a UDP socket
@@ -43,19 +43,19 @@ def calculateMean(myList):
 # Ping ten times
 for i in range(10):
     sendTime = time.time()
-    message = 'PING ' + str(i + 1) + " " + str(time.strftime("%H:%M:%S"))
-    clientSocket.sendto(message.encode("utf-8"), remoteAddr)
+    message = 'PING ' + str(i + 1) + ' ' + str(time.strftime('%H:%M:%S'))
+    clientSocket.sendto(message.encode('utf-8'), remoteAddr)
 
     try:
         data, server = clientSocket.recvfrom(1024)
         recdTime = time.time()
         rtt = recdTime - sendTime
         rtt_list.append(rtt)
-        print("Message Received", data.decode("utf-8"))
-        print("Min Round Trip Time", calculateMin(rtt_list))
-        print("Max Round Trip Time", calculateMax(rtt_list))
-        print("Mean Round Trip Time", calculateMean(rtt_list))
-        print("Round Trip Time", rtt)
+        print('Message Received', data.decode('utf-8'))
+        print('Min Round Trip Time', calculateMin(rtt_list))
+        print('Max Round Trip Time', calculateMax(rtt_list))
+        print('Mean Round Trip Time', calculateMean(rtt_list))
+        print('Round Trip Time', rtt)
 
     except timeout:
         print('REQUEST TIMED OUT')
