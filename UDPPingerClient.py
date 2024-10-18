@@ -22,14 +22,14 @@ rtt_list = []
 def calculateMin(myList):
     result = myList[0]
     for i in range(1, len(myList)):
-        if myList[i] < myList[i-1]:
+        if myList[i] < result:
             result = myList[i]
     return result
 
 def calculateMax(myList):
     result = myList[0]
     for i in range(1, len(myList)):
-        if myList[i] > myList[i-1]:
+        if myList[i] > result:
             result = myList[i]
     return result
 
