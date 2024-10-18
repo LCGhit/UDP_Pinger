@@ -14,7 +14,11 @@ serverSocket = socket(AF_INET, SOCK_DGRAM)
 # Assign IP address and port number to socket
 serverSocket.bind(('', int(sys.argv[1])))
 
+packages_num = 0
+lost_packages = 0
+lost_packages_percentage = 0
 while True:
+    packages_num += 1
     # Generate random number in the range of 0 to 10
     rand_1 = random.randint(0, 10)
     rand_2 = random.randint(0, 10)
@@ -31,4 +35,6 @@ while True:
         # the server responds
         serverSocket.sendto(message.encode("utf-8"), address)
     else:
+        lost_packages += 1
         print('Ignored message: ', rand_1)
+    print(f'Lost packages percentage: {(lost_packages/packages_num)*100}%')
